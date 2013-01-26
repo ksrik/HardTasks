@@ -7,10 +7,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char *c = new char[4];
-	strcpy_s("123",c);
-	Reverse(c);
-	delete[] c;
+	char *c = "123";	
+	RemoveDuplicates(c);
 	return 0;
 }
 

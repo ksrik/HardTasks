@@ -7,8 +7,9 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char *c = new char[10];	
-	RemoveDuplicates_M(c);
+	char* c = String("123");
+	Reverse(c);
+	MemFlush(c);
 	return 0;
 }
 

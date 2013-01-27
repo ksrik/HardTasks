@@ -7,6 +7,19 @@ const int CHAR_SIZE = sizeof(char);
 const int BOOL_SIZE = sizeof(bool);
 const int INT_SIZE = sizeof(int);
 
+template<typename T> T* MemCopy(int size, const T* source)
+{
+	if (!source || size <= 0)
+	{
+		return NULL;
+	}
+
+	T* buf = new T[size];
+	memcpy(buf, source, sizeof(T)*size);
+
+	return buf;
+}
+
 template<typename T> void MemFlush(T*& buf);
 template<typename T> T* MemAlloc(int size, T* buf = NULL, bool clean = true, bool flush = false)
 {

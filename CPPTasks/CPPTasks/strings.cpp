@@ -1,5 +1,12 @@
 #include "stdafx.h"
 
+char* String(const char* source)
+{
+	int sz = strlen(source) + 1;
+	char* buf = MemCopy<char>(sz, source);
+	return buf;
+}
+
 bool IsAllUnique(const char* str)
 {
 	if (!str)
@@ -19,7 +26,7 @@ bool IsAllUnique(const char* str)
 		chars[c] = true;
 		pc++;
 	}	
-	delete[] chars;
+	MemFlush(chars);
 	return res;
 }
 
@@ -78,8 +85,7 @@ void RemoveDuplicates_M(char* str)
 	if (len < 2)
 		return;
 
-	bool* hit = new bool[CHARSET_SIZE];
-	memset(hit, 0, CHAR_SIZE * CHARSET_SIZE);
+	bool* hit = MemAlloc<bool>(CHARSET_SIZE);
 
 	hit[str[0]] = true;
 	int tail = 1;

@@ -110,37 +110,32 @@ bool IsAnagrams(const char* s1, const char* s2)
 	if (l1 != l2)
 		return false;
 
+	int* letters = MemAlloc<int>(CHARSET_SIZE);
+
 	int numUniqueChars = 0;
 	int numCompletedT = 0;
 
-	return false;
-}
+	for (int i=0;i<l1;i++)
+	{
+		char c = s1[i];
+		if (letters[c] == 0)
+		{
+			numUniqueChars++;
+		}
+		letters[c]++;
+	}
+	bool res = true;
+	for (int i=0;i<l2;i++)
+	{
+		char c = s2[i];
+		if (letters[c] == 0) 
+		{
+			res = false;
+			break;
+		}
+		letters[c]--;		
+	}
 
-/*
-public static boolean anagram(String s, String t) {
-2 if (s.length() != t.length()) return false;
-3 int[] letters = new int[256];
-4 int num_unique_chars = 0;
-5 int num_completed_t = 0;
-6 char[] s_array = s.toCharArray();
-7 for (char c : s_array) { // count number of each char in s.
-8 if (letters[c] == 0) ++num_unique_chars;
-9 ++letters[c];
-10 }
-11 for (int i = 0; i < t.length(); ++i) {
-12 int c = (int) t.charAt(i);
-13 if (letters[c] == 0) { // Found more of char c in t than in s.
-14 return false;
-15 }
-16 --letters[c];
-17 if (letters[c] == 0) {
-18 ++num_completed_t;
-19 if (num_completed_t == num_unique_chars) {
-20 // it’s a match if t has been processed completely
-21 return i == t.length() - 1;
-22 }
-23 }
-24 }
-25 return false;
-26 }
-*/
+	MemFlush<int>(letters);
+	return res;
+}

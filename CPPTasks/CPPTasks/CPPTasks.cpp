@@ -7,9 +7,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char* c = String("123");
-	Reverse(c);
-	MemFlush(c);
+	bool a = IsAnagrams("123","323");	
 	return 0;
 }
 

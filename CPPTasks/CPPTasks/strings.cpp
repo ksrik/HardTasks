@@ -12,7 +12,7 @@ bool IsAllUnique(const char* str)
 	if (!str)
 		return true;
 
-	bool *chars = MemAlloc<bool>(CHARSET_SIZE);
+	bool* chars = MemAlloc<bool>(CHARSET_SIZE);
 	char *pc = const_cast<char*>(str);
 	bool res = true;
 	while (*pc) 
@@ -26,7 +26,7 @@ bool IsAllUnique(const char* str)
 		chars[c] = true;
 		pc++;
 	}	
-	MemFlush(chars);
+	MemFlush<bool>(chars);
 	return res;
 }
 
@@ -99,7 +99,7 @@ void RemoveDuplicates_M(char* str)
 		}
 	}
 
-	delete[] hit;
+	MemFlush<bool>(hit);
 }
 
 bool IsAnagrams(const char* s1, const char* s2)

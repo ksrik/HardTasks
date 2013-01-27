@@ -7,8 +7,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	char *c = "123";	
-	RemoveDuplicates(c);
+	char *c = new char[10];	
+	RemoveDuplicates_M(c);
 	return 0;
 }
 

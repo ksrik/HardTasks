@@ -8,4 +8,5 @@
 #include <string.h>
 #include <memory.h>
 
+#include "utils.h"
 #include "strings.h"

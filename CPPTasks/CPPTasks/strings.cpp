@@ -1,16 +1,11 @@
 #include "stdafx.h"
 
-const int CHARSET_SIZE = 256;
-const int PTR_SIZE = sizeof(void*);
-const int CHAR_SIZE = sizeof(char);
-
 bool IsAllUnique(const char* str)
 {
 	if (!str)
 		return true;
 
-	bool *chars = new bool[CHARSET_SIZE];
-	memset(chars, 0, CHAR_SIZE * CHARSET_SIZE);
+	bool *chars = MemAlloc<bool>(CHARSET_SIZE);
 	char *pc = const_cast<char*>(str);
 	bool res = true;
 	while (*pc) 
@@ -37,9 +32,9 @@ void Reverse(char* str)
 	char tmp;
 	while (*end)
 	{
-		++end;
+		end++;
 	}
-	--end;
+	end--;
 	while (str < end)
 	{
 		tmp = *str;
@@ -74,24 +69,72 @@ void RemoveDuplicates(char* str)
 	str[tail] = 0;
 }
 
+void RemoveDuplicates_M(char* str)
+{
+		if (!str)
+		return;
+
+	int len = strlen(str);
+	if (len < 2)
+		return;
+
+	bool* hit = new bool[CHARSET_SIZE];
+	memset(hit, 0, CHAR_SIZE * CHARSET_SIZE);
+
+	hit[str[0]] = true;
+	int tail = 1;
+	for (int i = 1; i < len; i++)
+	{
+		if (!hit[str[i]])
+		{
+			str[tail] = str[i];
+			tail++;
+			hit[str[i]] = true;
+		}
+	}
+
+	delete[] hit;
+}
+
+bool IsAnagrams(const char* s1, const char* s2)
+{
+	int l1 = strlen(s1);
+	int l2 = strlen(s2);
+
+	if (l1 != l2)
+		return false;
+
+	int numUniqueChars = 0;
+	int numCompletedT = 0;
+
+	return false;
+}
+
 /*
-public static void removeDuplicates(char[] str) {
-2 if (str == null) return;
-3 int len = str.length;
-4 if (len < 2) return;
-5
-6 int tail = 1;
-7
-8 for (int i = 1; i < len; ++i) {
-9 int j;
-10 for (j = 0; j < tail; ++j) {
-11 if (str[i] == str[j]) break;
-12 }
-13 if (j == tail) {
-14 str[tail] = str[i];
-15 ++tail;
-16 }
-17 }
-18 str[tail] = 0;
-19 }
+public static boolean anagram(String s, String t) {
+2 if (s.length() != t.length()) return false;
+3 int[] letters = new int[256];
+4 int num_unique_chars = 0;
+5 int num_completed_t = 0;
+6 char[] s_array = s.toCharArray();
+7 for (char c : s_array) { // count number of each char in s.
+8 if (letters[c] == 0) ++num_unique_chars;
+9 ++letters[c];
+10 }
+11 for (int i = 0; i < t.length(); ++i) {
+12 int c = (int) t.charAt(i);
+13 if (letters[c] == 0) { // Found more of char c in t than in s.
+14 return false;
+15 }
+16 --letters[c];
+17 if (letters[c] == 0) {
+18 ++num_completed_t;
+19 if (num_completed_t == num_unique_chars) {
+20 // it’s a match if t has been processed completely
+21 return i == t.length() - 1;
+22 }
+23 }
+24 }
+25 return false;
+26 }
 */

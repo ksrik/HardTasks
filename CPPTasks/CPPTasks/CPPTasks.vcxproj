@@ -87,13 +87,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="arrays.h" />
+    <ClInclude Include="matrices.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="strings.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="arrays.cpp" />
     <ClCompile Include="CPPTasks.cpp" />
+    <ClCompile Include="matrices.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

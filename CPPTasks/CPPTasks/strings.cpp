@@ -139,3 +139,19 @@ bool IsAnagrams(const char* s1, const char* s2)
 	MemFlush<int>(letters);
 	return res;
 }
+
+char* Replace(const char* src, const char* repl)
+{
+	int srcLen = strlen(src);
+	int replLen = strlen(repl);
+	int cnt = 0;
+	for (int i=0;i<srcLen;i++)
+	{
+
+	}
+
+	int resLen = srcLen + replLen * cnt;
+	char* str = MemAlloc<char>(resLen + 1);
+	str[resLen] = '\0';
+	return str;
+}

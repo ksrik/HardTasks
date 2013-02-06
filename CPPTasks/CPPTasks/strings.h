@@ -43,3 +43,7 @@ Write a method to decide if two strings are anagrams or not.
 */
 bool IsAnagrams(const char* str1, const char* str2);
 
+/*
+Write a method to replace all another string occurances to another string
+*/
+char* Replace(const char* src, const char* repl, const char* replTo);

@@ -140,18 +140,52 @@ bool IsAnagrams(const char* s1, const char* s2)
 	return res;
 }
 
-char* Replace(const char* src, const char* repl)
+char* Replace(const char* src, const char* repl, const char* replTo)
 {
 	int srcLen = strlen(src);
 	int replLen = strlen(repl);
-	int cnt = 0;
-	for (int i=0;i<srcLen;i++)
+	int replToLen = strlen(replTo);
+	if (replLen == 0)
 	{
+		return String(src);
+	}	
+	int cnt = 0;
 
-	}
+	for (int i = 0; i < srcLen ; i++)
+	{	
+		int j = 0;
+		char cr = repl[j];
+		char c = src[i];
+		while (c == cr && i < srcLen && j < replLen)
+		{
+			i++;
+			j++;
+		}
+		if (j > 0)
+		{
+			cnt++;
+		}
+	}	
 
-	int resLen = srcLen + replLen * cnt;
+	int resLen = srcLen - replLen * cnt + replToLen * cnt;
 	char* str = MemAlloc<char>(resLen + 1);
 	str[resLen] = '\0';
+
+	int i = 0;
+	for (int k = 0; k < resLen && i < srcLen; k++)
+	{
+		int j = 0;
+		char c = src[i];
+		char cr = repl[j];
+		if (c != cr)
+		{
+			str[k] = src[i];
+		}
+		else
+		{
+		}
+		i++;
+	}
+	
 	return str;
 }

@@ -15,3 +15,4 @@
 #include "strings.h"
 #include "arrays.h"
 #include "matrices.h"
+#include "trees.h"

@@ -92,6 +92,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="strings.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="trees.h" />
     <ClInclude Include="utils.h" />
   </ItemGroup>
   <ItemGroup>

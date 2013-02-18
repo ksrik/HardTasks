@@ -7,7 +7,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	bool a = IsAnagrams("123","323");	
+	TreeNode<int>* tree = RandomTree<int>(50);
 	return 0;
 }
 
